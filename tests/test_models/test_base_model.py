@@ -5,7 +5,7 @@ Test files by using the following command line:
 python3 -m unittest tests/test_models/test_base_model.py
 """
 import unittest
-from datetime import datetime
+import datetime
 from models.base_model import BaseModel
 
 
