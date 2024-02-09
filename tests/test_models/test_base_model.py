@@ -6,12 +6,14 @@ python3 -m unittest tests/test_models/test_base_model.py
 """
 import unittest
 import sys
-<<<<<<< HEAD
-sys.path.append('..')  # Add the parent directory to the sys.path
-=======
->>>>>>> origin/main
-import datetime
+import io
+import sys
+import models
+import json
+from os import remove
+from os.path import isfile
 from models.base_model import BaseModel
+from datetime import datetime
 
 
 class TestBaseModel(unittest.TestCase):
@@ -47,7 +49,6 @@ class TestBaseModel(unittest.TestCase):
     def test_basemodel_save(self):
         """ Test save method of BaseModel """
         new = BaseModel()
-<<<<<<< HEAD
         old_time = new.updated_at
         new.save()
         self.assertNotEqual(old_time, new.updated_at)
@@ -85,26 +86,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(my_model.updated_at, my_new_model.updated_at)
         self.assertEqual(my_model.name, my_new_model.name)
         self.assertEqual(my_model.my_number, my_new_model.my_number)
-=======
-        old_updated_at = new.updated_at
-        new.save()
-        self.assertNotEqual(new.updated_at, old_updated_at)
-
-    def test_basemodel_to_dict(self):
-        """ Test to_dict method of BaseModel """
-        new = BaseModel()
-        new_dict = new.to_dict()
-
-        # Check keys in dictionary
-        self.assertIn("id", new_dict)
-        self.assertIn("created_at", new_dict)
-        self.assertIn("updated_at", new_dict)
-        self.assertIn("__class__", new_dict)
-
-        # Check values in dictionary
-        self.assertEqual(new_dict["id"], new.id)
-        self.assertEqual(new_dict["__class__"], new.__class__.__name__)
->>>>>>> origin/main
 
 
 if __name__ == '__main__':
