@@ -13,7 +13,7 @@ import json
 from os import remove
 from os.path import isfile
 from models.base_model import BaseModel
-from datetime import datetime
+import datetime
 
 
 class TestBaseModel(unittest.TestCase):
