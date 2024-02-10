@@ -5,6 +5,8 @@ Test files by using the following command line:
 python3 -m unittest tests/test_models/test_base_model.py
 """
 import unittest
+import sys
+import datetime
 from models.base_model import BaseModel
 import datetime
 import sys
@@ -90,6 +92,25 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(my_model.updated_at, my_new_model.updated_at)
         self.assertEqual(my_model.name, my_new_model.name)
         self.assertEqual(my_model.my_number, my_new_model.my_number)
+        
+        old_updated_at = new.updated_at
+        new.save()
+        self.assertNotEqual(new.updated_at, old_updated_at)
+
+    def test_basemodel_to_dict(self):
+        """ Test to_dict method of BaseModel """
+        new = BaseModel()
+        new_dict = new.to_dict()
+
+        # Check keys in dictionary
+        self.assertIn("id", new_dict)
+        self.assertIn("created_at", new_dict)
+        self.assertIn("updated_at", new_dict)
+        self.assertIn("__class__", new_dict)
+
+        # Check values in dictionary
+        self.assertEqual(new_dict["id"], new.id)
+        self.assertEqual(new_dict["__class__"], new.__class__.__name__)
 
 
 if __name__ == '__main__':
