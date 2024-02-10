@@ -5,15 +5,18 @@ Test files by using the following command line:
 python3 -m unittest tests/test_models/test_base_model.py
 """
 import unittest
-import sys
-import io
-import sys
-import models
-import json
-from os import remove
-from os.path import isfile
 from models.base_model import BaseModel
 import datetime
+import sys
+import os
+
+# Get the current script's directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Append the parent directory to the sys.path
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+grand_parent_dir = os.path.abspath(os.path.join(parent_dir, '..'))
+sys.path.extend([parent_dir, grand_parent_dir])
 
 
 class TestBaseModel(unittest.TestCase):
