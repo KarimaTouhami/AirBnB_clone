@@ -3,6 +3,7 @@
 import uuid
 from datetime import datetime
 import json
+import models
 
 """BaseModel Class"""
 
@@ -14,7 +15,9 @@ class BaseModel():
         """Constructor Method"""
 
         format_time = '%Y-%m-%dT%H:%M:%S.%f'
-
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -22,9 +25,7 @@ class BaseModel():
                         value = datetime.strptime(value, format_time)
                     setattr(self, key, value)
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """String Representation"""
@@ -33,6 +34,7 @@ class BaseModel():
     def save(self):
         """Updates the attribute"""
         self.updated_at = datetime.today()
+        models.storage.save()
 
     def to_dict(self):
         """Serialize The Object and Modifying attributes"""
