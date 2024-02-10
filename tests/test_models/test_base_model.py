@@ -8,6 +8,18 @@ import unittest
 import sys
 import datetime
 from models.base_model import BaseModel
+import datetime
+import sys
+import os
+
+# Get the current script's directory
+current_directory = os.path.abspath(os.path.dirname(__file__))
+
+# Append the parent directory to the sys.path
+parent_directory = os.path.abspath(os.path.join(current_directory, '..'))
+grandparent_directory = os.path.abspath(os.path.join(parent_directory, '..'))
+
+sys.path.extend([parent_directory, grandparent_directory])
 
 
 class TestBaseModel(unittest.TestCase):
@@ -43,6 +55,44 @@ class TestBaseModel(unittest.TestCase):
     def test_basemodel_save(self):
         """ Test save method of BaseModel """
         new = BaseModel()
+        old_time = new.updated_at
+        new.save()
+        self.assertNotEqual(old_time, new.updated_at)
+        self.assertGreater(new.updated_at, old_time)
+
+    def test_to_dict(self):
+        """ Test conversion to dictionary """
+        my_model = BaseModel()
+        my_model.name = "My_First_Model"
+        my_model.my_number = 89
+
+        my_model_json = my_model.to_dict()
+
+        expected_keys = ['id', 'created_at', '__class__', 'my_number', 'updated_at', 'name']
+        for key in expected_keys:
+            self.assertIn(key, my_model_json)
+
+        self.assertEqual(my_model_json['__class__'], 'BaseModel')
+        self.assertIsInstance(my_model_json['created_at'], str)
+        self.assertIsInstance(my_model_json['updated_at'], str)
+        self.assertEqual(my_model_json['name'], "My_First_Model")
+        self.assertEqual(my_model_json['my_number'], 89)
+
+    def test_from_dict(self):
+        """ Test conversion from dictionary """
+        my_model = BaseModel()
+        my_model.name = "My_First_Model"
+        my_model.my_number = 89
+
+        my_model_json = my_model.to_dict()
+        my_new_model = BaseModel(**my_model_json)
+
+        self.assertEqual(my_model.id, my_new_model.id)
+        self.assertEqual(my_model.created_at, my_new_model.created_at)
+        self.assertEqual(my_model.updated_at, my_new_model.updated_at)
+        self.assertEqual(my_model.name, my_new_model.name)
+        self.assertEqual(my_model.my_number, my_new_model.my_number)
+        
         old_updated_at = new.updated_at
         new.save()
         self.assertNotEqual(new.updated_at, old_updated_at)
