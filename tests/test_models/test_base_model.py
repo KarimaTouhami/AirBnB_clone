@@ -5,12 +5,9 @@ Test files by using the following command line:
 python3 -m unittest tests/test_models/test_base_model.py
 """
 import unittest
-import sys
 import datetime
-from models.base_model import BaseModel
+from base_model import BaseModel
 import datetime
-import sys
-import os
 
 
 class TestBaseModel(unittest.TestCase):
