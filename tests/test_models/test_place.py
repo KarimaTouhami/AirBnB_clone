@@ -7,7 +7,7 @@ from datetime import datetime
 
 class TestPlace(unittest.TestCase):
     """ class to test Place class """
-    
+
     def test_place(self):
         """ test Place class """
         new = Place()
@@ -25,7 +25,7 @@ class TestPlace(unittest.TestCase):
         self.assertIsInstance(new, "latitude")
         self.assertIsInstance(new, "longitude")
         self.assertIsInstance(new, "amenity_ids")
-        
+
         """ check if it have the correct class """
         self.assertIsInstance(new.id, str)
         self.assertIsInstance(new.created_at, datetime)
@@ -41,7 +41,7 @@ class TestPlace(unittest.TestCase):
         self.assertIsInstance(new.latitude, float)
         self.assertIsInstance(new.longitude, float)
         self.assertIsInstance(new.amenity_ids, list)
-        
-        
+
+
 if __name__ == "__main__":
     unittest.main()
