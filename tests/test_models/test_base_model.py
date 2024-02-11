@@ -102,8 +102,9 @@ class TestBaseModel(unittest.TestCase):
 
         my_model_json = my_model.to_dict()
 
-        expected_keys = ['id', 'created_at', '__class__', 'my_number', 'updated_at', 'name']
-        for key in expected_keys:
+        expected_keys = ['id', 'created_at', '__class__', 'my_number']
+        expected_keys2 = ['updated_at', 'name']
+        for key in expected_keys + expected_keys2:
             self.assertIn(key, my_model_json)
 
         self.assertEqual(my_model_json['__class__'], 'BaseModel')
