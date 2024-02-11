@@ -1,9 +1,0 @@
-# Ignore all files
-*
-__pycache__/
-
-# Except for .c and .h files
-!*.py
-!.gitignore
-!AUTHORS
-!*.png
