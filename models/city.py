@@ -1,11 +1,9 @@
-#!/usr/bin/python3
-from models.base_model import BaseModel
-
-"""City Implementation"""
+#!user/bin/python3
+""" This module defines City class"""
+from base_model  import BaseModel
 
 
 class City(BaseModel):
-    """City Inherits From BaseModel"""
-
+    """ City Class """
     state_id = ""
     name = ""

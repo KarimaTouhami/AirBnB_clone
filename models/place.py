@@ -1,13 +1,11 @@
-#!/usr/bin/python3
-from models.base_model import BaseModel
-
-"""Place Impl."""
+#!user/bin/python3
+""" This module defines Place class"""
+from base_model  import BaseModel
 
 
 class Place(BaseModel):
-    """Place"""
-
-    city_id = ""
+    """ More classes! """
+    state_id = ""
     user_id = ""
     name = ""
     description = ""

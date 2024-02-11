@@ -1,10 +1,8 @@
-#!/usr/bin/python3
-from models.base_model import BaseModel
-
-"""State Implementation"""
+#!user/bin/python3
+""" This module defines State class"""
+from base_model import BaseModel
 
 
 class State(BaseModel):
-    """State Inherits From BaseModel"""
-
+    """ State class """
     name = ""
