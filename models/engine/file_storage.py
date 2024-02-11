@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from base_model import BaseModel
+from models.base_model import BaseModel
 from pathlib import Path
 import json
 from models.user import User
@@ -37,7 +37,7 @@ class FileStorage:
         """Deserialize"""
 
         if Path(FileStorage.__file_path).exists():
-            with open(FileStorage.__file_path, "r", "utf-8") as f:
+            with open(FileStorage.__file_path, "r") as f:
                 new_dict = json.load(f)
             for key, value in new_dict.items():
                 class_name = value["__class__"]
