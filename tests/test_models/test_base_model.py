@@ -12,15 +12,6 @@ import datetime
 import sys
 import os
 
-# Get the current script's directory
-current_directory = os.path.abspath(os.path.dirname(__file__))
-
-# Append the parent directory to the sys.path
-parent_directory = os.path.abspath(os.path.join(current_directory, '..'))
-grandparent_directory = os.path.abspath(os.path.join(parent_directory, '..'))
-
-sys.path.extend([parent_directory, grandparent_directory])
-
 
 class TestBaseModel(unittest.TestCase):
     """ Declares TestBaseModel Class """
