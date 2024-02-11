@@ -7,7 +7,7 @@ import datetime
 
 class Test_User(unittest.TestCase):
     """ class to test User class """
-    
+
     def test_user(self):
         """ test User class """
         new = User()
@@ -18,7 +18,7 @@ class Test_User(unittest.TestCase):
         self.assertIsInstance(new, "password")
         self.assertIsInstance(new, "first_name")
         self.assertIsInstance(new, "last_name")
-        
+
         """ check if it have the correct class """
         self.assertIsInstance(new.id, str)
         self.assertIsInstance(new.created_at, datetime)
@@ -27,7 +27,7 @@ class Test_User(unittest.TestCase):
         self.assertIsInstance(new.password, str)
         self.assertIsInstance(new.first_name, str)
         self.assertIsInstance(new.last_name, str)
-        
-        
+
+
 if __name__ == "__main__":
     unittest.main()
