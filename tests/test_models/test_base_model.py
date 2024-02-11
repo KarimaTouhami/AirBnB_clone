@@ -13,6 +13,7 @@ import sys
 import models
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
     """ Declares TestBaseModel Class """
 
@@ -158,6 +159,7 @@ class TestBaseModel(unittest.TestCase):
         old_time = new.updated_at
         new.save()
         self.assertGreater(new.updated_at, old_time)
+
 
 if __name__ == '__main__':
     unittest.main()
