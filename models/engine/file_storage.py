@@ -2,6 +2,7 @@
 from base_model import BaseModel
 from pathlib import Path
 import json
+from models.user import User
 
 
 """Serialization and Deserialization"""
